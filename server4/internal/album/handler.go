@@ -19,14 +19,17 @@ func GenerateAlbumID() string {
 func EnSureArtistOwnerID(ctx *gin.Context, a *album) bool {
 	role := auth.GetRole(ctx)
 	userID := auth.GetUserID(ctx)
+
 	if role != string(user.RoleArtist) {
 		ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"msg": "Only Artists could access"})
 		return false
 	}
+
 	if a.OwnerID != userID {
 		ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"msg": "It is not belong to you"})
 		return false
 	}
+
 	return true
 }
 
