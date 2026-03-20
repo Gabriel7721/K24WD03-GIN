@@ -8,9 +8,9 @@ import (
 
 var (
 	users = []User{
-		{ID: "1", UserName: "admin", PasswordHash: "", Role: RoleAdmin},
-		{ID: "2", UserName: "artist1", PasswordHash: "", Role: RoleArtist},
-		{ID: "3", UserName: "artist2", PasswordHash: "", Role: RoleArtist},
+		{ID: "u1", UserName: "admin", PasswordHash: "", Role: RoleAdmin},
+		{ID: "u2", UserName: "artist1", PasswordHash: "", Role: RoleArtist},
+		{ID: "u3", UserName: "artist2", PasswordHash: "", Role: RoleArtist},
 	}
 	err = errors.New("Invalid User")
 )
