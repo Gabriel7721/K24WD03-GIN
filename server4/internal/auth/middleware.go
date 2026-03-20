@@ -43,5 +43,17 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 }
 func RequireRole(role string) gin.HandlerFunc {
-
+	return func(ctx *gin.Context) {
+		value, isExisted := ctx.Get(ContextRoleKey)
+		if !isExisted {
+			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"msg": "Role Not Found"})
+			return
+		}
+		currentRole := value.(string)
+		if currentRole != role {
+			ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"msg": "You are not allowed to access this resource"})
+			return
+		}
+		ctx.Next()
+	}
 }
