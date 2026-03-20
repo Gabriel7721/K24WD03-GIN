@@ -14,9 +14,9 @@ type albumForPatch struct {
 }
 
 var albums = []album{
-	{ID: "1", Title: "Thriller", Artist: "Michael Jackson", Price: 1500.99, OwnerID: "u1"},
-	{ID: "2", Title: "Back in Black", Artist: "AC/DC", Price: 2500.99, OwnerID: "u2"},
-	{ID: "3", Title: "The Bodyguard", Artist: "Whitney Houston", Price: 3500.99, OwnerID: "u2"},
+	{ID: "1", Title: "Thriller", Artist: "Michael Jackson", Price: 1500.99, OwnerID: "u2"},
+	{ID: "2", Title: "Back in Black", Artist: "AC/DC", Price: 2500.99, OwnerID: "u3"},
+	{ID: "3", Title: "The Bodyguard", Artist: "Whitney Houston", Price: 3500.99, OwnerID: "u3"},
 }
 
 func GetAll() []album {
