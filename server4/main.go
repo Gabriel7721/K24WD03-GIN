@@ -26,6 +26,9 @@ func main() {
 	// NOTE: Homeworks 2
 	// Kết nối với MySQL/MongoDB
 
+	// NOTE: Homeworks 3 (Tùy chọn)
+	// Khởi tạo UI cho server
+
 	api.DELETE("/albums/:id", album.DeleteAlbumHandler)
 
 	router.Run(":9999")
