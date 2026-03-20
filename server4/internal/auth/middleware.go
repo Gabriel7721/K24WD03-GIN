@@ -57,3 +57,18 @@ func RequireRole(role string) gin.HandlerFunc {
 		ctx.Next()
 	}
 }
+
+func GetUserID(ctx *gin.Context) string {
+	value, _ := ctx.Get(ContextUserIDKey)
+	if s, ok := value.(string); ok {
+		return s
+	}
+	return ""
+}
+func GetRole(ctx *gin.Context) string {
+	value, _ := ctx.Get(ContextRoleKey)
+	if s, ok := value.(string); ok {
+		return s
+	}
+	return ""
+}
