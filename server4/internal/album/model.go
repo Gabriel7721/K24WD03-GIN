@@ -44,6 +44,23 @@ func UpdateOne(id string, updated album) (*album, bool) {
 	}
 	return nil, false
 }
+func UpdatePatchOne(id string, updated albumForPatch) (*album, bool) {
+	for i := range albums {
+		if albums[i].ID == id {
+			if updated.Title != nil {
+				albums[i].Title = *updated.Title
+			}
+			if updated.Artist != nil {
+				albums[i].Artist = *updated.Artist
+			}
+			if updated.Price != nil {
+				albums[i].Price = *updated.Price
+			}
+			return &albums[i], true
+		}
+	}
+	return nil, false
+}
 func DeleteOne(id string) bool {
 	for i := range albums {
 		if albums[i].ID == id {
