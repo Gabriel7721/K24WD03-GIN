@@ -2,9 +2,17 @@ package user
 
 import (
 	"errors"
+	"net/http"
+	"server4/internal/auth"
 
+	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )
+
+type loginRequest struct {
+	UserName string `json:"username"`
+	Password string `json:"password"`
+}
 
 var (
 	users = []User{
@@ -34,4 +42,14 @@ func Authenticate(username, password string) (*User, error) {
 		}
 	}
 	return nil, err
+}
+
+func LoginHandler(ctx *gin.Context) {
+	var req loginRequest
+	ctx.BindJSON(&req)
+	u, _ := Authenticate(req.UserName, req.Password)
+	token, _ := auth.GenerateToken(u.ID, u.UserName, string(u.Role))
+	ctx.JSON(http.StatusOK, gin.H{
+		"access_token": token,
+	})
 }
