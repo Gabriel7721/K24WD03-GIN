@@ -16,9 +16,9 @@ type loginRequest struct {
 
 var (
 	users = []User{
-		{ID: "u1", UserName: "admin", PasswordHash: "", Role: RoleAdmin},
-		{ID: "u2", UserName: "artist1", PasswordHash: "", Role: RoleArtist},
-		{ID: "u3", UserName: "artist2", PasswordHash: "", Role: RoleArtist},
+		{ID: "u1", UserName: "admin", PasswordHash: hashPlain("abcd1234"), Role: RoleAdmin},
+		{ID: "u2", UserName: "artist1", PasswordHash: hashPlain("abcd1234"), Role: RoleArtist},
+		{ID: "u3", UserName: "artist2", PasswordHash: hashPlain("abcd1234"), Role: RoleArtist},
 	}
 	err = errors.New("Invalid User")
 )
@@ -43,7 +43,6 @@ func Authenticate(username, password string) (*User, error) {
 	}
 	return nil, err
 }
-
 func LoginHandler(ctx *gin.Context) {
 	var req loginRequest
 	ctx.BindJSON(&req)
